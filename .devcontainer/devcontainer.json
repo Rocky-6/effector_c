@@ -10,7 +10,9 @@
 			"settings": {
 				"C_Cpp.clang_format_fallbackStyle": "Google",
 				"C_Cpp.codeAnalysis.clangTidy.enabled": true,
-				"cmake.configureOnOpen": true
+				"cmake.configureOnOpen": true,
+				"editor.formatOnSave": true,
+				"editor.formatOnPaste": true
 			},
 			"extensions": [
 				"vadimcn.vscode-lldb"
