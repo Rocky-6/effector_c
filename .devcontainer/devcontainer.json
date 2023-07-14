@@ -4,6 +4,18 @@
 	"name": "C",
 	"build": {
 		"dockerfile": "Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"C_Cpp.clang_format_fallbackStyle": "Google",
+				"C_Cpp.codeAnalysis.clangTidy.enabled": true,
+				"cmake.configureOnOpen": true
+			},
+			"extensions": [
+				"vadimcn.vscode-lldb"
+			]
+		}
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
