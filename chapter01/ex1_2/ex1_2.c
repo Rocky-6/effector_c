@@ -1,31 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "wave.h"
 
-int main(void)
-{
+int main(void) {
   STEREO_PCM pcm0, pcm1;
   int n;
-  
-  stereo_wave_read(&pcm0, "c.wav"); /* WAVEƒtƒ@ƒCƒ‹‚©‚çƒXƒeƒŒƒI‚Ì‰¹ƒf[ƒ^‚ğ“ü—Í‚·‚é */
-  
-  pcm1.fs = pcm0.fs; /* •W–{‰»ü”g” */
-  pcm1.bits = pcm0.bits; /* —Êq‰»¸“x */
-  pcm1.length = pcm0.length; /* ‰¹ƒf[ƒ^‚Ì’·‚³ */
-  pcm1.sL = calloc(pcm1.length, sizeof(double)); /* ƒƒ‚ƒŠ‚ÌŠm•Û */
-  pcm1.sR = calloc(pcm1.length, sizeof(double)); /* ƒƒ‚ƒŠ‚ÌŠm•Û */
-  for (n = 0; n < pcm1.length; n++)
-  {
-    pcm1.sL[n] = pcm0.sL[n]; /* ‰¹ƒf[ƒ^‚ÌƒRƒs[ */
-    pcm1.sR[n] = pcm0.sR[n]; /* ‰¹ƒf[ƒ^‚ÌƒRƒs[ */
+
+  stereo_wave_read(&pcm0,
+                   "c.wav"); /* WAVEãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ã‚¹ãƒ†ãƒ¬ã‚ªã®éŸ³ãƒ‡ãƒ¼ã‚¿ã‚’å…¥åŠ›ã™ã‚‹ */
+
+  pcm1.fs = pcm0.fs;         /* æ¨™æœ¬åŒ–å‘¨æ³¢æ•° */
+  pcm1.bits = pcm0.bits;     /* é‡å­åŒ–ç²¾åº¦ */
+  pcm1.length = pcm0.length; /* éŸ³ãƒ‡ãƒ¼ã‚¿ã®é•·ã• */
+  pcm1.sL = (double*)calloc(pcm1.length, sizeof(double)); /* ãƒ¡ãƒ¢ãƒªã®ç¢ºä¿ */
+  pcm1.sR = (double*)calloc(pcm1.length, sizeof(double)); /* ãƒ¡ãƒ¢ãƒªã®ç¢ºä¿ */
+  for (n = 0; n < pcm1.length; n++) {
+    pcm1.sL[n] = pcm0.sL[n]; /* éŸ³ãƒ‡ãƒ¼ã‚¿ã®ã‚³ãƒ”ãƒ¼ */
+    pcm1.sR[n] = pcm0.sR[n]; /* éŸ³ãƒ‡ãƒ¼ã‚¿ã®ã‚³ãƒ”ãƒ¼ */
   }
-  
-  stereo_wave_write(&pcm1, "d.wav"); /* WAVEƒtƒ@ƒCƒ‹‚ÉƒXƒeƒŒƒI‚Ì‰¹ƒf[ƒ^‚ğo—Í‚·‚é */
-  
-  free(pcm0.sL); /* ƒƒ‚ƒŠ‚Ì‰ğ•ú */
-  free(pcm0.sR); /* ƒƒ‚ƒŠ‚Ì‰ğ•ú */
-  free(pcm1.sL); /* ƒƒ‚ƒŠ‚Ì‰ğ•ú */
-  free(pcm1.sR); /* ƒƒ‚ƒŠ‚Ì‰ğ•ú */
-  
+
+  stereo_wave_write(&pcm1,
+                    "d.wav"); /* WAVEãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚¹ãƒ†ãƒ¬ã‚ªã®éŸ³ãƒ‡ãƒ¼ã‚¿ã‚’å‡ºåŠ›ã™ã‚‹ */
+
+  free(pcm0.sL); /* ãƒ¡ãƒ¢ãƒªã®è§£æ”¾ */
+  free(pcm0.sR); /* ãƒ¡ãƒ¢ãƒªã®é–‹æ”¾ */
+  free(pcm1.sL); /* ãƒ¡ãƒ¢ãƒªã®é–‹æ”¾ */
+  free(pcm1.sR); /* ãƒ¡ãƒ¢ãƒªã®é–‹æ”¾ */
+
   return 0;
 }
