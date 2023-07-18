@@ -30,3 +30,9 @@ target_link_libraries(ex1_2 PRIVATE wave)
 
 # c.wav, d.wavをコピー
 configure_file(chapter01/ex1_2/c.wav c.wav COPYONLY)
+
+add_executable(ex2_1 chapter02/ex2_1/ex2_1.c)
+
+target_link_libraries(ex2_1 PRIVATE wave)
+
+configure_file(chapter02/ex2_1/ex2_1.wav ex2_1.wav COPYONLY)
